@@ -1,8 +1,4 @@
-<?php
-
-include "inc/fonctions.php";
-
-?>
+<?php include "inc/fonctions.php"; ?>
 
 <!DOCTYPE html>
 <html>

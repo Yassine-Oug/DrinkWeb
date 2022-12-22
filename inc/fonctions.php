@@ -1,8 +1,10 @@
 <?php
 
-//include "inc/db.php";
+include "inc/db.php";
+include "Donnees/install.php";
 
 $connect = mysqli_connect('localhost' , 'root', '', 'MyMarket');
+$donnees = mysqli_connect('localhost' , 'root', '', 'DrinkWeb');
 
 //fonctions//
 
@@ -62,23 +64,20 @@ function cart(){
 
 }
 
-
-
 //**** get category ****//
 
 function get_cat(){
 
-    global $connect;
+    global $donnees;
 
-    $get_cat = "select * from category";
+    $get_cat = "select * from ALIMENT";
 
-    $run_cat = mysqli_query($connect, $get_cat);
+    $run_cat = mysqli_query($donnees, $get_cat);
 
 
     while($row_cat = mysqli_fetch_array($run_cat)){
 
-        echo '<li><a href="MarketPlace.php?cat='.$row_cat['c_id'].'">'.$row_cat['c_name'].'</a></li>';
-
+        echo '<li><a href="MarketPlace.php?cat='.$row_cat['nom_aliment'].'">'.$row_cat['nom_aliment'].'</a></li>';
     }
 
 }
@@ -89,77 +88,29 @@ function get_cat(){
 
 function get_pro(){
 
-    global $connect;
+    global $donnees;
 
-    if(!isset($_GET['cat'])){
+    $get_cocktail = "select * from COCKTAIL";
 
-        $get_pro = "select * from products";
+    $run_cocktail = mysqli_query($donnees, $get_cocktail);
+    
+    while($row_pro = mysqli_fetch_array($run_cocktail)){
 
-        $run_pro = mysqli_query($connect, $get_pro);
-
-        while($row_pro = mysqli_fetch_array($run_pro)){
-
-            echo '
-                <li>
-                    <div class="product">
-                        <div id="pro_img">
-                        <a href="#"><img src="admin/img/'.$row_pro['p_img'].'"width="250" height="150" /></a>
-                        </div>
-                        <div id="pro_title">
-                            <a href="#">'.$row_pro['p_title'].'</a>
-                        </div>
-                        <div id="pro_bay">
-                            <a href="MarketPlace.php?add_cart='.$row_pro['p_id'].'"><button>acheter</button></a>
-                        </div>
+        echo '
+            <li>
+                <div class="product">
+                    <div id="pro_img">
+                    <a href="#"><img src="Donnees/Photos/Bloody_mary.jpg" width="250" height="150" /></a>
                     </div>
-                </li>
-            ';
-
-        }
-
-    }
-}
-
-
-//**** get products by category ****//
-
-function get_pro_cat(){
-    global $connect;
-
-    if(isset($_GET['cat'])){
-
-        $cat = (int)$_GET['cat'];
-
-        $get_pro_cat = "select * from products where p_category = '$cat'";
-
-        $run_pro_cat = mysqli_query($connect,$get_pro_cat);
-
-        if(mysqli_num_rows($run_pro_cat) > 0){
-
-            while($row_pro_cat = mysqli_fetch_array($run_pro_cat)){
-
-                echo '
-                    <li>
-                        <div class="product">
-                            <div id="pro_img">
-                              <a href="#"><img src="admin/img/'.$row_pro_cat['p_img'].'"width="250" height="150" /></a>
-                            </div>
-                            <div id="pro_title">
-                                <a href="#">'.$row_pro_cat['p_title'].'</a>
-                            </div>
-                            <div id="pro_bay">
-                                <a href="#"><button>acheter</button></a>
-                            </div>
-                        </div>
-                    </li>
-                ';
-        
-            }
-
-        }else{
-
-            echo '<div class="vide"> Vide </div>';
-        }
+                    <div id="pro_title">
+                        <a href="#">'.$row_pro['titre'].'</a>
+                    </div>
+                    <div id="pro_bay">
+                        <a href="MarketPlace.php?add_cart='.$row_pro['titre'].'"><button>acheter</button></a>
+                    </div>
+                </div>
+            </li>
+        ';
 
     }
 }

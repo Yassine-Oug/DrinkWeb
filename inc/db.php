@@ -23,7 +23,9 @@ define("DB_PASSWORD", "");
 define("DB_DATABASE", "MyMarket");
 
     //connect bd
-    $connect = mysqli_connect('localhost' , 'root', '', 'MyMarket');
+    //$connect = mysqli_connect('localhost' , 'root', '', 'MyMarket');
+    $db = mysqli_connect('localhost' , 'root', '', 'DrinkWeb');
+
 
 
 ?>

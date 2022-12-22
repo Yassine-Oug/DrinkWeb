@@ -1,11 +1,8 @@
-<?php include "files/header.php"; ?>
-
+<?php include "files/header.php";?>
     <ul>
+    <?php include "Donnees/install.php";?>
         <?php
             get_pro();
-        ?>
-        <?php
-            get_pro_cat();
         ?>
         <div class="c"></div>
     </ul>

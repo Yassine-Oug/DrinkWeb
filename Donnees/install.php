@@ -1,8 +1,12 @@
 <?php
-include 'Donnees.inc.php';
+//include "db/Donnees.inc.php";
+//include "Donnees/Donnees.inc.php";
+include "Donnees.inc.php";
+
+
 /******/
 $user = "root"; // A changer en fonction de l'environnement
-$password = "root"; // A changer en fonction de l'environnement
+$password = ""; // A changer en fonction de l'environnement
 $base = "DrinkWeb";
 $server = "mysql:host=localhost;dbname=$base;charset=utf8";
 
@@ -117,6 +121,7 @@ foreach ($Recettes as $key => $value) {
         }
     }
 }
+
 
 // Fermeture de la connexion automatique en fin de script
 ?>
