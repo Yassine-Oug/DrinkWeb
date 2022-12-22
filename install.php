@@ -1,4 +1,5 @@
 <?php
+include 'Donnees.inc.php';
 /******/
 define("DB_SERVER", "localhost");
 define("DB_USER", "root");
@@ -6,21 +7,21 @@ define("DB_PASSWORD", "root"); // A préciser dans le rapport
 define("DB_DATABASE", "DrinkWeb"); // A préciser dans le rapport
 //$db = mysqli_connect(DB_SERVER , DB_USER, DB_PASSWORD, DB_DATABASE);
 
-/******/
+// Connexion à la base de donnée
+$server = "mysql:host=localhost;dbname=DrinkWeb;charset=utf8";
+$user = "root";
+$password = "root";
+$base = "DrinkWeb";
+try
+{
+	$db = new PDO($server, $user, $password);
+}
+catch (Exception $e)
+{
+    die('Erreur : ' . $e->getMessage());
+}
 
-
-  function query($link,$requete)
-  { 
-    $resultat=mysqli_query($link,$requete) or die("$requete : ".mysqli_error($link));
-    return($resultat);
-  }
-
-  
-//$mysqli=mysqli_connect('127.0.0.1', 'root', '') or die("Erreur de connexion");
-//echo 'hello';
-$mysqli = mysqli_connect(DB_SERVER , DB_USER, DB_PASSWORD) or die("Erreur de connexion");
-
-$base=DB_DATABASE;
+//Création de la base de donnée
 $Sql="
     DROP DATABASE IF EXISTS $base;
 
@@ -45,49 +46,84 @@ $Sql="
     );
     
     CREATE TABLE ALIMENT (
-        id_aliment INT AUTO_INCREMENT,
-        nom_aliment VARCHAR(50) NOT NULL,
-        PRIMARY KEY(id_aliment)
+        nom_aliment VARCHAR(50) NOT NULL PRIMARY KEY
     );
     
     CREATE TABLE COCKTAIL (
-        id_cocktail INT AUTO_INCREMENT,
         titre VARCHAR(255) NOT NULL,
-        ingredients VARCHAR(255) NOT NULL,
-        preparation VARCHAR(255) NOT NULL,
-        id_aliment INT,
-        PRIMARY KEY(id_cocktail),
-        FOREIGN KEY (id_aliment) REFERENCES ALIMENT(id_aliment)
+        ingredients VARCHAR(1000) NOT NULL,
+        preparation VARCHAR(1000) NOT NULL,
+        PRIMARY KEY(titre)
+    );
+
+    CREATE TABLE LIAISON (
+        nom_cocktail VARCHAR(255),
+        nom_aliment VARCHAR(50),
+        PRIMARY KEY (nom_cocktail, nom_aliment),
+        FOREIGN KEY (nom_cocktail) REFERENCES COCKTAIL(titre),
+        FOREIGN KEY (nom_aliment) REFERENCES ALIMENT(nom_aliment)
     );
     
     CREATE TABLE PANIER (
         id_panier INT AUTO_INCREMENT,
         id_utilisateur INT,
-        id_cocktail INT,
+        nom_cocktail VARCHAR(255),
         PRIMARY KEY(id_panier),
         FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur),
-        FOREIGN KEY (id_cocktail) REFERENCES COCKTAIL(id_cocktail)
+        FOREIGN KEY (nom_cocktail) REFERENCES COCKTAIL(titre)
     )
 ";
 
-foreach(explode(';',$Sql) as $Requete) query($mysqli,$Requete);
+foreach (explode(';', $Sql) as $requete) {
+    //$res = $dp->prepare($requete);
+    $db->exec($requete);
+}
 
-mysqli_close($mysqli);
+foreach($Hierarchie as $key => $val){
+    /* Insertion des aliments */
+    // Préparation de la requête
+    $Sql = $db->prepare("INSERT INTO ALIMENT (nom_aliment) VALUES (:nomAliment)");
+    $Sql->bindParam(':nomAliment', $key);
+    // Exécution de la requête
+    try {
+        $Sql->execute();
+    } catch (PDOException $exception) {
+        echo "Erreur lors de l'insertion de $key dans Aliment : $exception->getMessage()";
+    }
+}
 
-/*
-foreach ($Recettes as $var => $value) {
-    foreach ($value as $key => $val) {
-        if ($key=="titre") {
-            echo "$val";
-            echo "<br/>";
-        }
-        if(is_array($key)){
-            #echo print_r($key, true);
-        } else {
-            #echo $val;
+foreach ($Recettes as $key => $value) {
+    /* Insertion des cocktails*/
+    // Récupération des éléments nécessaire
+    $titre = $value['titre'];
+    $ingredients = $value['ingredients'];
+    $preparation = $value['preparation'];
+    // Préparation de la requête
+    $Sql = $db->prepare("INSERT INTO COCKTAIL (titre, ingredients, preparation) VALUES (:titre, :ingredients, :preparation)");
+    $Sql->bindParam(':titre', $titre);
+    $Sql->bindParam(':ingredients', $ingredients);
+    $Sql->bindParam(':preparation', $preparation);
+    // Exécution de la requête
+    try {
+        $Sql->execute();
+    } catch (PDOException $exception) {
+        echo " Erreur lors de l'ajout du cocktail $titre : $exception->getMessage()";
+    }
+    /* Insertion dans liaison de la liaison entre un aliment et sa recette */
+    foreach ($value['index'] as $key1 => $value1) {
+        // Préparation de la requête
+        $Sql = $db->prepare("INSERT INTO LIAISON (nom_cocktail, nom_aliment) VALUES (:nom_cocktail, :nom_aliment)");
+        $Sql->bindParam(':nom_cocktail', $titre);
+        $Sql->bindParam(':nom_aliment', $value1);
+        // Exécution de la requête
+        try {
+            $Sql->execute();
+        } catch (PDOException $exception) {
+            echo " Erreur lors de l'ajout de la liaison $titre -> $value1 : $exception->getMessage()";
         }
     }
 }
-*/
+
+// Fermeture de la connexion automatique en fin de script
 ?>
 
