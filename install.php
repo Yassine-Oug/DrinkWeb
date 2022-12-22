@@ -72,7 +72,7 @@ foreach (explode(';', $Sql) as $requete) {
     //$res = $dp->prepare($requete);
     $db->exec($requete);
 }
-
+//
 foreach($Hierarchie as $key => $val){
     /* Insertion des aliments */
     // Préparation de la requête
