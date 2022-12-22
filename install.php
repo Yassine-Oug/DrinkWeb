@@ -1,17 +1,12 @@
 <?php
 include 'Donnees.inc.php';
 /******/
-define("DB_SERVER", "localhost");
-define("DB_USER", "root");
-define("DB_PASSWORD", "root"); // A préciser dans le rapport
-define("DB_DATABASE", "DrinkWeb"); // A préciser dans le rapport
-//$db = mysqli_connect(DB_SERVER , DB_USER, DB_PASSWORD, DB_DATABASE);
+$user = "root"; // A changer en fonction de l'environnement
+$password = "root"; // A changer en fonction de l'environnement
+$base = "DrinkWeb";
+$server = "mysql:host=localhost;dbname=$base;charset=utf8";
 
 // Connexion à la base de donnée
-$server = "mysql:host=localhost;dbname=DrinkWeb;charset=utf8";
-$user = "root";
-$password = "root";
-$base = "DrinkWeb";
 try
 {
 	$db = new PDO($server, $user, $password);
@@ -71,8 +66,7 @@ $Sql="
         PRIMARY KEY(id_panier),
         FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur),
         FOREIGN KEY (nom_cocktail) REFERENCES COCKTAIL(titre)
-    )
-";
+    )";
 
 foreach (explode(';', $Sql) as $requete) {
     //$res = $dp->prepare($requete);
