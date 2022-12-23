@@ -6,9 +6,9 @@ include "Donnees.inc.php";
 
 /******/
 $user = "root"; // A changer en fonction de l'environnement
-$password = ""; // A changer en fonction de l'environnement
+$password = "root"; // A changer en fonction de l'environnement
 $base = "DrinkWeb";
-$server = "mysql:host=localhost;dbname=$base;charset=utf8";
+$server = "mysql:host=localhost;charset=utf8";
 
 // Connexion à la base de donnée
 try
@@ -49,6 +49,7 @@ $Sql="
     );
     
     CREATE TABLE COCKTAIL (
+        id_cocktail INT,
         titre VARCHAR(255) NOT NULL,
         ingredients VARCHAR(1000) NOT NULL,
         preparation VARCHAR(1000) NOT NULL,
@@ -89,7 +90,7 @@ foreach($Hierarchie as $key => $val){
         echo "Erreur lors de l'insertion de $key dans Aliment : $exception->getMessage()";
     }
 }
-
+$cmp_id = 0;
 foreach ($Recettes as $key => $value) {
     /* Insertion des cocktails*/
     // Récupération des éléments nécessaire
@@ -97,7 +98,8 @@ foreach ($Recettes as $key => $value) {
     $ingredients = $value['ingredients'];
     $preparation = $value['preparation'];
     // Préparation de la requête
-    $Sql = $db->prepare("INSERT INTO COCKTAIL (titre, ingredients, preparation) VALUES (:titre, :ingredients, :preparation)");
+    $Sql = $db->prepare("INSERT INTO COCKTAIL (id_cocktail, titre, ingredients, preparation) VALUES (:id_cocktail, :titre, :ingredients, :preparation)");
+    $Sql->bindParam(':id_cocktail', $cmp_id);
     $Sql->bindParam(':titre', $titre);
     $Sql->bindParam(':ingredients', $ingredients);
     $Sql->bindParam(':preparation', $preparation);
@@ -120,6 +122,7 @@ foreach ($Recettes as $key => $value) {
             echo " Erreur lors de l'ajout de la liaison $titre -> $value1 : $exception->getMessage()";
         }
     }
+    $cmp_id+=1;
 }
 
 
