@@ -18,6 +18,11 @@ body{
 .l{
     float: left;
 }
+
+.l2{
+    float: left;
+}
+
 .c{
     clear: both;
 }
@@ -28,6 +33,13 @@ body{
 .w1{
     width: 1000px;
     margin: 10px auto;
+}
+
+.w3{
+    float: left;
+    font-family:tahoma;
+    font-size:22px;
+    color:#FFA500;
 }
 
 .headerTop{
@@ -87,9 +99,6 @@ body{
     border-bottom: 3px solid rgb(255, 145, 0);
     padding: 0px;
 }
-
-
-
 
 .searchForm input[type=text] {
     margin-top: 5px;
@@ -197,9 +206,10 @@ font-family:tahoma;
 .cart{
     font-family: tahoma;
     color: #555;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     margin-top: 15px;
+    margin-left: 10px;
 }
 .cart a{
     color: #db7c00;

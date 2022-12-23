@@ -9,7 +9,7 @@ $donnees = mysqli_connect('localhost' , 'root', '', 'DrinkWeb');
 //fonctions//
 
 //**** get ip ****//
-
+//v
 function getIp(){
 
     $ip = $_SERVER['REMOTE_ADDR'];
@@ -65,7 +65,7 @@ function cart(){
 }
 
 //**** get category ****//
-
+//v
 function get_cat(){
 
     global $donnees;
@@ -84,8 +84,7 @@ function get_cat(){
 
 
 //**** get pro ****//
-
-
+//v
 function get_pro(){
 
     global $donnees;
@@ -100,13 +99,13 @@ function get_pro(){
             <li>
                 <div class="product">
                     <div id="pro_img">
-                    <a href="#"><img src="Donnees/Photos/Bloody_mary.jpg" width="250" height="150" /></a>
+                    <a href="#"><img src="Donnees/Photos/Bloody_mary.jpg" width="150" height="50" /></a>
                     </div>
                     <div id="pro_title">
                         <a href="#">'.$row_pro['titre'].'</a>
                     </div>
                     <div id="pro_bay">
-                        <a href="MarketPlace.php?add_cart='.$row_pro['titre'].'"><button>acheter</button></a>
+                        <a href="MarketPlace.php?add_cart='.$row_pro['id_cocktail'].'"><button>acheter</button></a>
                     </div>
                 </div>
             </li>
@@ -117,40 +116,40 @@ function get_pro(){
 
 
 //**** get products by search ****//
-
+//v
 function get_pro_search(){
 
-    global $connect;
+    global $donnees;
 
     if(isset($_GET['search'])){
 
         $searchArea = $_GET['searchArea'];
 
-        $get_pro_search = "select * from products where p_key_word like '%$searchArea%'";
+        $get_pro_search = "select * from COCKTAIL where titre like '%$searchArea%'";
 
-        $run_pro_search = mysqli_query($connect,$get_pro_search);
+
+        $run_pro_search = mysqli_query($donnees,$get_pro_search);
 
         if(mysqli_num_rows($run_pro_search) > 0){
 
             while($row_pro_search = mysqli_fetch_array($run_pro_search)){
 
                 echo '
-                    <li>
-                        <div class="product">
+                <li>
+                    <div class="product">
                         <div id="pro_img">
-                            <a href="#"><img src="admin/img/'.$row_pro_search['p_img'].'"width="250" height="150" /></a>
-                            </div>
-                            <div id="pro_title">
-                                <a href="#">'.$row_pro_search['p_title'].'</a>
-                            </div>
-                            <div id="pro_bay">
-                                <a href="#"><button>acheter</button></a>
-                            </div>
+                            <a href="#"><img src="Donnees/Photos/Bloody_mary.jpg" width="150" height="50" /></a>
                         </div>
-                    </li>
-                ';
+                        <div id="pro_title">
+                            <a href="#">'.$row_pro_search['titre'].'</a>
+                        </div>
+                        <div id="pro_bay">
+                            <a href="MarketPlace.php?add_cart='.$row_pro_search['id_cocktail'].'"><button>acheter</button></a>
+                        </div>
+                    </div>
+                </li>
+            ';
             }
-
         }else{
 
             echo '<div class="vide"> Vide </div>';

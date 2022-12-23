@@ -6,7 +6,7 @@ include "Donnees.inc.php";
 
 /******/
 $user = "root"; // A changer en fonction de l'environnement
-$password = "root"; // A changer en fonction de l'environnement
+$password = ""; // A changer en fonction de l'environnement
 $base = "DrinkWeb";
 $server = "mysql:host=localhost;charset=utf8";
 

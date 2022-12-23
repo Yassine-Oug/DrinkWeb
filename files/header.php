@@ -21,12 +21,21 @@
 
     <!-- HEADER END -->
 
-    <!-- MENU START -->
 
-    <div class="menuBar">
+   <!-- MENU START -->
+
+   <div class="menuBar">
         <ul class="w">
-            <li><a href="MarketPlace.php">Toutes</a></li>
-            <?php get_cat();?>
+        <div class="sochil l">
+                <ul>
+                    <li><a href="#"><i class="icon-facebook-sign"></i>Facebook</a></li>
+                    <li><a href="#"><i class="icon-twitter"></i>Twitter</a></li>
+                    <li><a href="#"><i class="icon-globe"></i>WebSite</a></li>
+                    <li><a href="#"><i class="icon-envelope"></i>Mail</a></li>
+                    <li><a href="#"><i class="icon-cog"></i>Language</a></li>
+                </ul>
+            </div>
+            <?php //get_cat();?>
             <div class="c"></div>
         </ul>
     </div>
@@ -48,14 +57,8 @@
                     <input type="submit" name="search" value="chercher"/>
                 </form>
             </div>
-            <div class="sochil l">
-                <ul>
-                    <li><a href="#"><i class="icon-facebook-sign"></i>Facebook</a></li>
-                    <li><a href="#"><i class="icon-twitter"></i>Twitter</a></li>
-                    <li><a href="#"><i class="icon-globe"></i>WebSite</a></li>
-                    <li><a href="#"><i class="icon-envelope"></i>Mail</a></li>
-                    <li><a href="#"><i class="icon-cog"></i>Language</a></li>
-                </ul>
+            <div class="cart l">
+                <a href="MarketPlace.php">Toutes</a>
             </div>
             <div class="c"></div>
         </div>
