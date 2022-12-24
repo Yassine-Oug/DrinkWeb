@@ -6,7 +6,7 @@ include "Donnees.inc.php";
 
 /******/
 $user = "root"; // A changer en fonction de l'environnement
-$password = ""; // A changer en fonction de l'environnement
+$password = "root"; // A changer en fonction de l'environnement
 $base = "DrinkWeb";
 $server = "mysql:host=localhost;charset=utf8";
 
@@ -30,11 +30,11 @@ $Sql="
 
     CREATE TABLE UTILISATEUR ( 
         id_utilisateur INT AUTO_INCREMENT, 
-        nom VARCHAR(50), 
-        prenom VARCHAR(50), 
-        username VARCHAR(50),
-        mail VARCHAR(50) UNIQUE NOT NULL,
-        mot_de_passe VARCHAR(50) NOT NULL,
+        nom VARCHAR(100), 
+        prenom VARCHAR(100), 
+        username VARCHAR(100),
+        mail VARCHAR(100) UNIQUE NOT NULL,
+        mot_de_passe VARCHAR(100) NOT NULL,
         sexe VARCHAR(25),
         date_naissance DATE,
         adresse VARCHAR(255),
@@ -58,7 +58,7 @@ $Sql="
 
     CREATE TABLE LIAISON (
         nom_cocktail VARCHAR(255),
-        nom_aliment VARCHAR(50),
+        nom_aliment VARCHAR(100),
         PRIMARY KEY (nom_cocktail, nom_aliment),
         FOREIGN KEY (nom_cocktail) REFERENCES COCKTAIL(titre),
         FOREIGN KEY (nom_aliment) REFERENCES ALIMENT(nom_aliment)
