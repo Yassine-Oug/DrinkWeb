@@ -30,7 +30,7 @@
 							# L'utilisateur est connecté, proposer la déconnexion 
 							echo '
 								<div class="text-end">
-									<a href="deconnexion/index.php" class="btn btn-outline-light active" >Déconnexion</a>
+									<a href="deconnexion/deconnexion.php" class="btn btn-outline-light active" >Déconnexion</a>
 								</div>
 							';
 							
