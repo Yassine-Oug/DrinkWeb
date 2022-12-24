@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Market Place</title>
+	<title>Drink Web</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
@@ -15,7 +15,7 @@
 
     <div class="headerTop">
         <div class="logo w">
-            <a href="MarketPlace.php"><img src="images/logo.png" width="300"/></a>
+            <a href="MarketPlace.php"><img src="images/logoDW.png" width="320"/></a>
         </div>
     </div>
 
@@ -35,6 +35,10 @@
                     <li><a href="#"><i class="icon-cog"></i>Language</a></li>
                 </ul>
             </div>
+            <div>
+            <input class="cart r2" type="submit" name="login" placeholder=" login " value="Creer Compte" />
+            <input class="cart" type="submit" name="Connexion" placeholder=" Connexion " value="  Connexion  " />    
+            </div>
             <?php //get_cat();?>
             <div class="c"></div>
         </ul>
@@ -50,7 +54,7 @@
             cart();
         ?>
         <div class="w">
-            <div class="cart r2"> Votre panier MyMarket - Vos produits : , Sous_total : <a href='#'>Vos paiments</a></div>
+            <div class="cart r2"> Votre panier DrinkWeb - Vos produits : <a href='#'>Vos paiments</a></div>
             <div class="searchForm l">
                 <form action="search.php" method="get">
                     <input type="text" name="searchArea" placeholder="chercher"/>

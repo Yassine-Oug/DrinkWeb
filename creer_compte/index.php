@@ -79,6 +79,7 @@
                         </div>
                         <div class="col-3"></div>
                     </div>
+                    <br/>
                     <button type="submit" class="btn btn-secondary">S'inscrire</button>
                 </form>
             </div>

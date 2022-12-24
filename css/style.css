@@ -214,3 +214,10 @@ font-family:tahoma;
 .cart a{
     color: #db7c00;
 }
+
+.mytext {
+    background: black;
+    color: white;
+    display: inline;
+    text-align: right;
+    }
