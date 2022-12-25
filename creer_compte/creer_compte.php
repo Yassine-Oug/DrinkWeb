@@ -2,26 +2,15 @@
     session_start();
 
     include "Donnees.inc.php";
+    include "../fonctions/fonctions.php";
 
     if(!isset($_POST['email']) || !isset($_POST['password'])){
         // Retour au menu principal
         echo "Erreur dans les valeur de POST";
     } else {
-        /******/
-        $user = "root"; // A changer en fonction de l'environnement
-        $password = "root"; // A changer en fonction de l'environnement
-        $base = "DrinkWeb";
-        $server = "mysql:host=localhost;dbname=$base;charset=utf8";
-
-        // Connexion à la base de donnée
-        try
-        {
-            $db = new PDO($server, $user, $password);
-        }
-        catch (Exception $e)
-        {
-            die('Erreur : ' . $e->getMessage());
-        }
+        
+        // Connexion à la base de donnée 
+        $db = connexion_database();
 
         $email = htmlspecialchars($_POST['email']);
         $mdp = htmlspecialchars($_POST['password']);
