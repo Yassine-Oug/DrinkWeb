@@ -14,7 +14,7 @@
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li class="nav-link px-2 text-secondary">
-                        <a href="#" class="text-decoration-none text-secondary">Accueil</a>
+                        <a href="../Index.php" class="text-decoration-none text-secondary">Accueil</a>
                     </li>
                     <li class="nav-link px-2 text-white">Cocktails</li>
                     <li class="nav-link px-2 text-white">Mes recettes préférées</li>
@@ -27,39 +27,25 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h3> Connexion </h3>
+                <h3>Connexion</h3>
             </div>
-            <div class="col-12">
-                <form action="./creer_compte.php" method="post">
-
-                    <div class="form-group ">
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6">
-                            <label for="EmailUser">Adresse mail</label>
-                        </div>
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6">
-                            <input type="email" name="email" class="form-control" id="emailUserId" placeholder="adresse@mail.com" required>
-                        </div>
-                        <div class="col-3"></div>
+            <form action="./connexion.php" method="post" class="d-flex flex-column">
+                <div class="justify-content-center">
+                    <div class="mb-1">
+                        <label for="EmailUser">Adresse mail</label>
                     </div>
-                    <div class="form-group ">
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6">
-                            <label for="MdpUser">Mot de passe</label>
-                        </div>
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6">
-                            <input type="password" class="form-control" name="password" id="passwordUserId" required>
-                        </div>
-                        <div class="col-3"></div>
+                    <div class="mb-3">
+                        <input type="email" name="email" class="form-control" id="emailUserId" placeholder="adresse@mail.com" required>
                     </div>
-                    <br/>
-                    <button type="submit" class="btn btn-secondary"> Connexion </button>
-                </form>
-            </div>
+                    <div class="mb-1">
+                        <label for="MdpUser">Mot de passe</label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" name="password" id="passwordUserId" required>
+                    </div>
+                    <button type="submit" class="btn btn-secondary col-1"> Connexion </button>
+                </div>
+            </form>
         </div>
     </div>
     <script src="../js/bootstrap.min.js"></script>
