@@ -75,10 +75,10 @@
             $_SESSION['email'] = $email;
             // Retour accueil 
             echo "Job is done";
-            header('Location: ../ndex.php');
+            header('Location: ../Index.php');
         } else {
             echo "Error";
-            header('Location: ../ndex.php');
+            header('Location: ../Index.php');
         }
 
     }

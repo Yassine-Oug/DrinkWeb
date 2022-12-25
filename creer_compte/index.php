@@ -25,7 +25,7 @@
     </header>
     <!-- End header part -->
     <div class="container">
-        <div class="row">
+        <div class="row rafed">
             <div class="col-12 text-center">
                 <h3>Créer un compte</h3>
             </div>
