@@ -80,16 +80,20 @@
                 foreach ($res as $key) {
                     $name_img = get_name($key['nom_cocktail']);
                     $nom_cocktail = $key['nom_cocktail'];
+                    $path = "../Donnees/Photos/$name_img.jpg";
                     echo "
-                    <div class=\"card col-3 m-2 justify-content-between\">
-                        <img src=\"../Donnees/Photos/$name_img.jpg\" class=\"card-img-top\" alt=\"\">
-                        <div class=\"card-body\">
-                            <h5 class=\"card-text text-center\">$nom_cocktail</h5>
-                        </div>
+                    <div class=\"card col-12 col-lg-3 m-2 d-flex justify-content-center\">
+                        <a href=\"../recette/index.php?nomCocktail=$nom_cocktail&path=$path\" class=\"text-decoration-none\">
+                            <img src=\"$path\" class=\"card-img-top rounded mx-auto d-block h-75\" alt=\"\">
+                            <div class=\"card-body\">
+                                <h5 class=\"card-text text-center text-black\">$nom_cocktail</h5>
+                            </div>
+                        </a>
                     </div>
                     ";
                 }
             ?>
+            
         </div>
     </div>
     <script src="../js/bootstrap.min.js"></script>
