@@ -64,10 +64,10 @@
             $_SESSION['email'] = $email;
             // Retour accueil 
             echo "Job is done";
-            header('Location: ../Index.php');
+            header('Location: ../index.php');
         } else {
             echo "Error";
-            header('Location: ../Index.php');
+            header('Location: ../index.php');
         }
 
     }

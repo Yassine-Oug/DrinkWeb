@@ -41,7 +41,7 @@
                 $_SESSION['nom'] = $rep['nom'];
                 $_SESSION['prenom'] = $rep['prenom'];
                 $_SESSION['email'] = $rep['mail'];
-                header('Location: ../Index.php');
+                header('Location: ../index.php');
             } else{
                 header("Location: ./index.php?erreur_connexion=mot de passe incorrect$mdp_hash");
             }

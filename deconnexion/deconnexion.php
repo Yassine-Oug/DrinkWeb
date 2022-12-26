@@ -4,6 +4,6 @@
     // Déconnexion en détruisant la session
     session_destroy();
     session_write_close();
-    header('Location: ../Index.php');
+    header('Location: ../index.php');
 
 ?>
