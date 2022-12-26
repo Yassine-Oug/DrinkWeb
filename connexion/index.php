@@ -16,7 +16,9 @@
                     <li class="nav-link px-2 text-secondary">
                         <a href="../Index.php" class="text-decoration-none text-secondary">Accueil</a>
                     </li>
-                    <li class="nav-link px-2 text-white">Cocktails</li>
+                    <li class="nav-link px-2 text-white">
+							<a href="../Cocktails/index.php" class="text-decoration-none text-white"> Cocktails </a>
+					</li>
                     <li class="nav-link px-2">
                         <a href="../mes_recettes_preferes/index.php" class="text-decoration-none text-white">Mes recettes préférées</a>
                     </li>

@@ -21,9 +21,11 @@
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li class="nav-link px-2">
-                        <a href="../Index.php" class="text-decoration-none text-secondary">Accueil</a>
+                        <a href="../index.php" class="text-decoration-none text-secondary">Accueil</a>
                     </li>
-                    <li class="nav-link px-2 text-white">Cocktails</li>
+                    <li class="nav-link px-2">
+                        <a href="../Cocktails/index.php" class="text-decoration-none text-secondary">Cocktails</a>
+                    </li>
                     <li class="nav-link px-2">
                         <a href="../mes_recettes_preferes/index.php" class="text-decoration-none text-white">Mes recettes préférées</a>
                     </li>

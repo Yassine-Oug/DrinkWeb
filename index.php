@@ -10,7 +10,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/CSS.css" />
 		<title>DrinkWeb</title>
 	</head>
 	<body>
@@ -19,9 +19,7 @@
 			<div class="container">
 				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-						<li class="nav-link px-2 text-secondary">
-							<a href="#" class="text-decoration-none text-secondary">Accueil</a>
-						</li>
+						<li class="nav-link px-2 text-secondary">Accueil</li>
 						<li class="nav-link px-2 text-white">
 							<a href="Cocktails/index.php" class="text-decoration-none text-white"> Cocktails </a>
 						</li>
@@ -98,7 +96,7 @@
                 <li><a href="#">Conditions d'utilisation</a></li>
             </ul>
         </div>
-        <div class="footerLogo l">
+        <div class="footerLogo l2">
             <a href="Index.php"><img src="images/logoDW.png" width="200px" /></a>
         </div>
         <div class="c"></div>

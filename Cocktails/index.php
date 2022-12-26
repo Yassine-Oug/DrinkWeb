@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/CSS.css" />
 
     <title>DrinkWeb - Cocktails </title>
     <?php
@@ -17,17 +17,20 @@
     ?>
 </head>
 <body>
+    
     <!-- Header part -->
     <header class="p-3 text-bg-dark">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li class="nav-link px-2">
-                        <a href="../Index.php" class="text-decoration-none text-secondary">Accueil</a>
+                    <li class="nav-link px-2 text-white">
+                        <a href="../index.php" class="text-decoration-none text-secondary">Accueil</a>
                     </li>
-                    <li class="nav-link px-2 text-white">Cocktails</li>
                     <li class="nav-link px-2">
-                        <a href="#" class="text-decoration-none text-white">Mes recettes préférées</a>
+                        <a href="#" class="text-decoration-none text-white">Cocktails</a>
+                    </li>
+                    <li class="nav-link px-2 text-white">
+                        <a href="../mes_recettes_preferes/index.php" class="text-decoration-none text-white">Mes recettes préférées</a>
                     </li>
                 </ul>
             </div>
@@ -38,21 +41,20 @@
 
 
 
-<!-- MENU START -->
+    <!-- MENU START -->
 
-<div class="menuBar">
+    <div class="menuBar">
         <ul class="w">
         <div class="sochil l">
-                <ul>
-                    <li><a href="#"><i class="icon-facebook-sign"></i>Facebook</a></li>
-                    <li><a href="#"><i class="icon-twitter"></i>Twitter</a></li>
-                    <li><a href="#"><i class="icon-globe"></i>WebSite</a></li>
-                    <li><a href="#"><i class="icon-envelope"></i>Mail</a></li>
-                    <li><a href="#"><i class="icon-cog"></i>Language</a></li>
-                </ul>
-            </div>
-            <div>
-
+            <ul>
+                <li><a href="#"><i class="icon-facebook-sign"></i>Facebook</a></li>
+                <li><a href="#"><i class="icon-twitter"></i>Twitter</a></li>
+                <li><a href="#"><i class="icon-globe"></i>WebSite</a></li>
+                <li><a href="#"><i class="icon-envelope"></i>Mail</a></li>
+                <li><a href="#"><i class="icon-cog"></i>Language</a></li>
+            </ul>
+        </div>
+        <div>
             <div class="searchForm l">
                 <form action="#" method="post">
                     <input type="text" name="searchArea" placeholder="chercher"/>
