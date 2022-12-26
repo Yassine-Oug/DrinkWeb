@@ -34,15 +34,15 @@
                         # L'utilisateur est connecté, proposer la déconnexion 
                         echo '
                             <div class="text-end">
-                                <a href="deconnexion/deconnexion.php" class="btn btn-outline-light active" >Déconnexion</a>
+                                <a href="../deconnexion/deconnexion.php" class="btn btn-outline-light active" >Déconnexion</a>
                             </div>
                         ';
                         
                     } else {
                         echo '
                             <div class="text-end">
-                                <a href="connexion/index.php" class="btn btn-outline-light" >Connexion</a>
-                                <a href="creer_compte/index.php" class="btn btn-outline-warning" >S\'inscrire</a>
+                                <a href="../connexion/index.php" class="btn btn-outline-light" >Connexion</a>
+                                <a href="../creer_compte/index.php" class="btn btn-outline-warning" >S\'inscrire</a>
                             </div>
                         ';
                     }
