@@ -57,6 +57,7 @@
     <div class="container">
         <div class="row">
             <?php
+                
                 if(isset($_GET['nomCocktail']) && isset($_GET['path'])){
                     // Cas ou les 2 sont présent
                     if($_GET['nomCocktail']!='' && $_GET['path']!=''){
@@ -102,13 +103,50 @@
                                 <p>$preparation</p>
                             </div>
                         </div>
+                        
                         ";
+                        // Ajout dans panier
+                        if (isset($_POST['ajouter'])) {
+                            if (isset($_SESSION['est_connecte']) && $_SESSION['est_connecte']=="1"){
+                                // User connecté
+                                $sql = $db->prepare("SELECT * FROM UTILISATEUR WHERE mail = :mail");
+                                $sql->bindParam(":mail", $_SESSION['email']);
+                                try {
+                                    $sql->execute();
+                                }  catch (PDOException $exception) {
+                                    echo "Erreur lors de la récupération de l'id_utilisateur";
+                                }
+                                $res = $sql->fetch();
+                                // Insertion du cocktail dans le panier
+                                $sql = $db->prepare("INSERT INTO PANIER (id_panier, id_utilisateur, nom_cocktail) VALUES (NULL, :id_utilisateur, :nom_cocktail");
+                                $sql->bindParam(":id_utilisateur", $res['id_utilisateur']);
+                                $sql->bindParam(":nom_cocktail", $nom);
+                                echo "nom = $nom </br>";
+                                echo "id = ".print_r($res);
+                                try {
+                                    $res = $sql->execute();
+                                    if (!$res) {
+                                        echo"erreur dans res";
+                                    }
+                                }  catch (PDOException $exception) {
+                                    echo "Erreur lors de la récupération de l'insertion dans panier";
+                                }
+                                echo "YES";
+                            } else {
+                                // User non connecté
+                                
+                            }
+                        }
                     }
                 } else {
-                    header("Location: ../Index.php?erreur=cocktail a afficher absent");
+                    header("Location: ../index.php?erreur=cocktail a afficher absent");
                 }
             ?>
-            
+            <div class="d-flex justify-content-center mt-3">
+                <form action="#" method="post">
+                    <button class="btn btn-success" type="submit" name="ajouter">Ajouter à mes recettes préférés</button>
+                </form>
+            </div>
         </div>
     </div>
 
