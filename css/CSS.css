@@ -89,8 +89,11 @@
     padding:10px 10px;
 }
 .sochil ul li a{
-    color: rgb(68, 68, 68);
+    color: #fff;
 }
 .sochil ul li a:hover{
-    color: rgb(66, 66, 66);
+    color: #fff;
+}
+.center {
+    align-items: center;
 }

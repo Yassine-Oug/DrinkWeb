@@ -17,7 +17,7 @@
     ?>
 </head>
 <body>
-    
+
     <!-- Header part -->
     <header class="p-3 text-bg-dark">
         <div class="container">
@@ -49,16 +49,15 @@
             <ul>
                 <li><a href="#"><i class="icon-facebook-sign"></i>Facebook</a></li>
                 <li><a href="#"><i class="icon-twitter"></i>Twitter</a></li>
+                <li><a href="#"><i class="icon-envelope"></i>Instagram</a></li>
                 <li><a href="#"><i class="icon-globe"></i>WebSite</a></li>
-                <li><a href="#"><i class="icon-envelope"></i>Mail</a></li>
-                <li><a href="#"><i class="icon-cog"></i>Language</a></li>
             </ul>
         </div>
         <div>
             <div class="searchForm l">
                 <form action="#" method="post">
                     <input type="text" name="searchArea" placeholder="chercher"/>
-                    <input type="submit" name="search" value="chercher"/>
+                    <input type="submit" name="search" class="btn btn-secondary" value="chercher"/>
                 </form>
             </div>
             <div class="c"></div>
@@ -104,11 +103,15 @@
                 $res = $sql->fetchAll();
                 
                 foreach ($res as $key) {
+                    $id_cocktail = get_name($key['id_cocktail']);
                     $name_img = get_name($key['titre']);
                     $nom_cocktail = $key['titre'];
                     $path = "../Donnees/Photos/$name_img.jpg";
                     echo "
                     <div class=\"card col-12 col-lg-3 m-2 d-flex justify-content-center\">
+                        <form action=\"#?\" method=\"post\">
+                            <input id =\"$id_cocktail\" type=\"submit\" name=\"Ajouter\" class=\"btn btn-secondary\" value=\"Ajouter\"/>
+                        </form>
                         <a href=\"../recette/index.php?nomCocktail=$nom_cocktail&path=$path\" class=\"text-decoration-none\">
                             <img src=\"$path\" class=\"card-img-top rounded mx-auto d-block h-75\" alt=\"\">
                             <div class=\"card-body\">
@@ -116,7 +119,62 @@
                             </div>
                         </a>
                     </div>
+                    <br/>
                     ";
+                }
+
+                /*************/
+
+
+                if(isset($_POST['Ajouter'])) {
+                    $ID_cocktail = htmlspecialchars($_POST['id']);
+
+
+                    if (isset($_SESSION['est_connecte']) && $_SESSION['est_connecte']=="1") {
+                        # L'utilisateur est connecté, proposer la déconnexion 
+
+                        $mail2 = $_SESSION['email'];
+
+                        // Récupération l'utilisateur
+                        $sql2 = $db->prepare("select * from UTILISATEUR where mail=:mail ");
+                        $sql2->bindParam(':mail', $mail2);
+                        try {
+                            $sql2->execute();
+                        }  catch (PDOException $exception) {
+                            echo "Erreur lors de la récupération de l'utilisateur";
+                        }
+                        $res2 = $sql2->fetch();
+                        $id_utilisateur = $res2['id_utilisateur'];
+
+                        // Récupération l'nom de cocktail
+                        $sql3 = $db->prepare("select * from COCKTAIL where id_cocktail=:ID ");
+                        $sql2->bindParam(':ID', $ID_cocktail);
+                        try {
+                            $sql3->execute();
+                        }  catch (PDOException $exception) {
+                            echo "Erreur lors de la récupération de l'utilisateur";
+                        }
+                        $res3 = $sql3->fetch();
+                        $nom_cocktail_panier = $res3['titre'];
+                        
+                        // INSERT INTO PANIER
+                        $sql = $db->prepare("INSERT INTO PANIER(id_utilisateur, nom_cocktail) VALUES (:id_utilisateur, :nom_cocktail_panier)");
+                        $sql->bindParam(':id_utilisateur', $id_utilisateur);
+                        $sql->bindParam(':nom_cocktail', $nom_cocktail_panier);
+                        try {
+                            $res = $sql->execute();
+                            if(!$res){
+                                echo "Erreur lors de l'insertion de l'utilisateur $email </br>";
+                            }
+                        }  catch (PDOException $exception) {
+                                echo "Erreur lors de l'insertion de l'utilisateur $email </br>";
+                        }
+                        
+                        
+                    } else {
+                        echo " l'utilisateur n'esi pas connecte ";
+                    }
+
                 }
             ?>
             
