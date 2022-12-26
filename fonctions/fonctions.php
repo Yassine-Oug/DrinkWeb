@@ -1,7 +1,7 @@
 <?php
     function connexion_database(){
         $user = "root"; // A changer en fonction de l'environnement
-        $password = "root"; // A changer en fonction de l'environnement
+        $password = ""; // A changer en fonction de l'environnement
         $base = "DrinkWeb";
         $server = "mysql:host=localhost;dbname=$base;charset=utf8";
         try

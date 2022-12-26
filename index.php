@@ -10,6 +10,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<title>DrinkWeb</title>
 	</head>
 	<body>
@@ -21,7 +22,9 @@
 						<li class="nav-link px-2 text-secondary">
 							<a href="#" class="text-decoration-none text-secondary">Accueil</a>
 						</li>
-						<li class="nav-link px-2 text-white">Cocktails</li>
+						<li class="nav-link px-2 text-white">
+							<a href="Cocktails/index.php" class="text-decoration-none text-white"> Cocktails </a>
+						</li>
 						<li class="nav-link px-2 text-white">
 							<a href="mes_recettes_preferes/index.php" class="text-decoration-none text-white">Mes recettes préférées</a>
 						</li>
@@ -84,6 +87,27 @@
 		</div>
 
 
+		<!-- FOOTER START -->
+
+<div class="footer">
+    <div class="w">
+        <div class="footerMenu">
+            <ul class="r">
+                <li><a href="#">À propos du site</a></li>
+                <li><a href="#">Politiques et confidentialité</a></li>
+                <li><a href="#">Conditions d'utilisation</a></li>
+            </ul>
+        </div>
+        <div class="footerLogo l">
+            <a href="Index.php"><img src="images/logoDW.png" width="200px" /></a>
+        </div>
+        <div class="c"></div>
+    </div>
+</div>
+
+<div class="copyRight"> Tous droits réservés &copy; </br> Publié en 2022  </div>
+
+<!-- FOOTER END -->
 
 
 
