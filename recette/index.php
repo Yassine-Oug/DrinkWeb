@@ -121,17 +121,14 @@
                                 $sql = $db->prepare("INSERT INTO PANIER (id_panier, id_utilisateur, nom_cocktail) VALUES (NULL, :id_utilisateur, :nom_cocktail");
                                 $sql->bindParam(":id_utilisateur", $res['id_utilisateur']);
                                 $sql->bindParam(":nom_cocktail", $nom);
-                                echo "nom = $nom </br>";
-                                echo "id = ".print_r($res);
                                 try {
                                     $res = $sql->execute();
                                     if (!$res) {
-                                        echo"erreur dans res";
+                                        //echo"erreur dans res";
                                     }
                                 }  catch (PDOException $exception) {
                                     echo "Erreur lors de la récupération de l'insertion dans panier";
                                 }
-                                echo "YES";
                             } else {
                                 // User non connecté
                                 
